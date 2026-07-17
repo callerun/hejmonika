@@ -16,11 +16,19 @@ cp -avf "/ctx/system_files"/. /
 dnf5 install -y tmux
 dnf5 install -y git
 dnf5 install -y vim
+dnf5 install -y dnf5-plugins
+
+# Install a desktop environment
+dnf5 install -y @cosmic-desktop-environment
 
 # Non fedora repos
 dnf5 -y copr enable scottames/ghostty
 dnf5 install -y ghostty
 dnf5 -y copr disable scottames/ghostty
+
+rpm --import https://downloads.1password.com/linux/keys/1password.asc
+sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
+dnf5 install -y 1password
 
 # Use a COPR Example:
 #
