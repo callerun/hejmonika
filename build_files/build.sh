@@ -14,6 +14,13 @@ cp -avf "/ctx/system_files"/. /
 
 # this installs a package from fedora repos
 dnf5 install -y tmux
+dnf5 install -y git
+dnf5 install -y vim
+
+# Non fedora repos
+dnf5 -y copr enable scottames/ghostty
+dnf5 install -y ghostty
+dnf5 -y copr disable scottames/ghostty
 
 # Use a COPR Example:
 #
